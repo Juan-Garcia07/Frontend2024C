@@ -1,4 +1,7 @@
 import './App.css'
+const numericButtonsClasses = 'btn btn-outline-primary w-100'
+const operatorButtonsClasses = 'btn btn-outline-success w-100'
+const specialButtonsClasses = 'btn btn-outline-danger'
 
 function App() {
   
@@ -9,79 +12,95 @@ function App() {
   <table className='center'>
     <tbody>
       <tr>
-        <td colSpan={4}>
-          11
+        <td className="text-end" colSpan={4}>
+          <h2>0</h2>
         </td>
         </tr>
             <tr>
         <td>
-          21
+        <button
+            className={operatorButtonsClasses} type='button'>C</button>
         </td>
         <td>
-          22
+        <button
+            className={operatorButtonsClasses} type='button'>{"<"}</button>
         </td>
         <td>
-          23
+        <button
+            className={operatorButtonsClasses} type='button'>%</button>
         </td>
         <td>
-          24
+        <button
+            className={operatorButtonsClasses} type='button'>/</button>
           </td>
             </tr>
             <tr>
         <td>
-          31
+        <button
+            className={numericButtonsClasses} type='button'>7</button>
         </td>
         <td>
-          32
+        <button
+            className={numericButtonsClasses} type='button'>8</button>
         </td>
         <td>
-          33
+        <button
+            className={numericButtonsClasses} type='button'>9</button>
         </td>
         <td>
-          34
+        <button
+            className={operatorButtonsClasses} type='button'>x</button>
           </td>
             </tr>
             <tr>
         <td>
-          41
+        <button
+            className={numericButtonsClasses} type='button'>4</button>
         </td>
         <td>
-          42
+        <button
+            className={numericButtonsClasses} type='button'>5</button>
         </td>
         <td>
-          43
+        <button
+            className={numericButtonsClasses} type='button'>6</button>
         </td>
         <td>
-          44
+        <button
+            className={operatorButtonsClasses} type='button'>-</button>
           </td>
             </tr>
             <tr>
         <td>
-          51
+        <button
+            className={numericButtonsClasses} type='button'>1</button>
         </td>
         <td>
-          52
+        <button
+            className={numericButtonsClasses} type='button'>2</button>
         </td>
         <td>
-          53
+        <button
+            className={numericButtonsClasses} type='button'>3</button>
         </td>
         <td>
-          54
-          </td>
+        <button
+            className={operatorButtonsClasses} type='button'>+</button>
+        </td>
           </tr>
         <tr>
-        <td>
-          61
+        <td colSpan={2}>
+          <button
+            className={numericButtonsClasses} type='button'>0</button>
         </td>
         <td>
-          62
+        <button
+            className={numericButtonsClasses} type='button'>.</button>
         </td>
         <td>
-          63
+        <button
+            className={specialButtonsClasses} type='button'>=</button>
         </td>
-        <td>
-          64
-          </td>
             </tr>
     </tbody>
   </table>
