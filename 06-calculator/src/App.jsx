@@ -6,7 +6,7 @@ const specialButtonsClasses = 'btn btn-outline-danger'
 
 function App() {
 
-  const [display, setDisplay] = useState({value: '0', hasPoint: false,})
+  const [display, setDisplay] = useState({value: '0', hasPoint: false, operator: '', previousValue :'0',})
 
  const updateDisplay = (value) =>{
   if (value === '.'){
@@ -34,12 +34,51 @@ function App() {
   })
    
  }
+
+ const deleteLastCharacter = () => {
+  setDisplay({
+    ...display,
+    value: display.value.slice(0, -1)
+  })
+
+  if(display.value.length === 1){
+    setDisplay({
+      ...display,
+      value: '0'
+    })
+  }
+ }
 const clearDisplay =() =>{
   setDisplay({
   ...display,
   value: '0',
   hasPoint: false,
 })
+}
+
+const setOperator = (operator) =>{
+  setDisplay({
+    ...display,
+    operator,
+    previousValue: display.value,
+    value: '0',
+    hasPoint: false,
+  })
+
+}
+
+const calculate = () =>{
+  if(display.operator === ''){
+    return
+  }
+
+  setDisplay({
+    ...display,
+    operator: '',
+    hasPoint: false,
+    previousValue: '0',
+    value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
+  })
 }
   
   return (
@@ -60,7 +99,7 @@ const clearDisplay =() =>{
         </td>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'>{"<"}</button>
+            className={operatorButtonsClasses} type='button'onClick={deleteLastCharacter}>{"<"}</button>
         </td>
         <td>
         <button
@@ -68,7 +107,7 @@ const clearDisplay =() =>{
         </td>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'>/</button>
+            className={operatorButtonsClasses} type='button'onClick={() => setOperator('/')}>/</button>
           </td>
             </tr>
             <tr>
@@ -86,7 +125,7 @@ const clearDisplay =() =>{
         </td>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'>x</button>
+            className={operatorButtonsClasses} type='button'onClick={() => setOperator('*')}>x</button>
           </td>
             </tr>
             <tr>
@@ -104,7 +143,7 @@ const clearDisplay =() =>{
         </td>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'>-</button>
+            className={operatorButtonsClasses} type='button'onClick={() => setOperator('-')}>-</button>
           </td>
             </tr>
             <tr>
@@ -122,7 +161,7 @@ const clearDisplay =() =>{
         </td>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'>+</button>
+            className={operatorButtonsClasses} type='button'onClick={() => setOperator('+')}>+</button>
         </td>
           </tr>
         <tr>
@@ -136,7 +175,7 @@ const clearDisplay =() =>{
         </td>
         <td>
         <button
-            className={specialButtonsClasses} type='button'>=</button>
+            className={specialButtonsClasses} type='button'onClick={calculate}>=</button>
         </td>
             </tr>
     </tbody>
