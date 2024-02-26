@@ -38,7 +38,8 @@ function App() {
  const deleteLastCharacter = () => {
   setDisplay({
     ...display,
-    value: display.value.slice(0, -1)
+    value: display.value.slice(0, -1),
+    hasPoint: (display.value.slice(-1) === '.')? false : display.hasPoint
   })
 
   if(display.value.length === 1){
@@ -72,12 +73,27 @@ const calculate = () =>{
     return
   }
 
+ // let result = 0
+ // if(display.operator === '%'){
+   // result = eval(display.previousValue + '/100*' + display.value)
+ // }else{
+   // eval(display.previousValue +   display.operator + display.value)
+  //}
+
+  
+
+  let result = (display.operator === '%')?
+  eval(display.previousValue + '/100*' + display.value):
+  eval(display.previousValue +   display.operator + display.value)
+  
+
   setDisplay({
     ...display,
     operator: '',
     hasPoint: false,
     previousValue: '0',
-    value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
+    value: result + '',
+    //value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
   })
 }
   
@@ -95,15 +111,15 @@ const calculate = () =>{
             <tr>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'onClick={clearDisplay}>C</button>
+            className={specialButtonsClasses} type='button'onClick={clearDisplay}>C</button>
         </td>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'onClick={deleteLastCharacter}>{"<"}</button>
+            className={specialButtonsClasses} type='button'onClick={deleteLastCharacter}>{"<"}</button>
         </td>
         <td>
         <button
-            className={operatorButtonsClasses} type='button'>%</button>
+            className={operatorButtonsClasses} type='button'onClick={() => setOperator('%')}>%</button>
         </td>
         <td>
         <button
