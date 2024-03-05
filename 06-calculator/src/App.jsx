@@ -15,7 +15,7 @@ function App() {
     }
     setDisplay({
       ...display,
-      value: display.value + value,
+      value: limit(display.value + value),
       hasPoint: true,
     })
     return 
@@ -29,7 +29,7 @@ function App() {
   }
   setDisplay({
     ...display,
-    value: display.value + value,
+    value: limit(display.value + value),
     
   })
    
@@ -85,6 +85,8 @@ const calculate = () =>{
   let result = (display.operator === '%')?
   eval(display.previousValue + '/100*' + display.value):
   eval(display.previousValue +   display.operator + display.value)
+
+  result = result + ""
   
 
   setDisplay({
@@ -92,10 +94,14 @@ const calculate = () =>{
     operator: '',
     hasPoint: false,
     previousValue: '0',
-    value: result + '',
+    value: limit(result + ''),
     //value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
   })
 }
+
+const limit = (string = '', length = 10) => {
+  return string.slice(0, length) 
+ }
   
   return (
     <div>
