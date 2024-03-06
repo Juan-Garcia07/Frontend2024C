@@ -4,6 +4,7 @@ const numericButtonsClasses = 'btn btn-outline-primary w-100'
 const operatorButtonsClasses = 'btn btn-outline-success w-100'
 const specialButtonsClasses = 'btn btn-outline-danger'
 
+
 function App() {
 
   const [display, setDisplay] = useState({value: '0', hasPoint: false, operator: '', previousValue :'0',})
@@ -97,6 +98,14 @@ const calculate = () =>{
     value: limit(result + ''),
     //value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
   })
+}
+
+const buttonsFunctions = {
+  updateDisplay,
+  clearDisplay,
+  deleteLastCharacter,
+  setOperator,
+  calculate,
 }
 
 const limit = (string = '', length = 10) => {
