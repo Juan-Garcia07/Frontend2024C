@@ -85,6 +85,8 @@ const calculate = () =>{
 
   let result = (display.operator === '%')?
   eval(display.previousValue + '/100*' + display.value):
+  display.operator === 'x' ?
+  eval(display.previousValue + ' *' + display.value) :
   eval(display.previousValue +   display.operator + display.value)
 
   result = result + ""
@@ -93,7 +95,7 @@ const calculate = () =>{
   setDisplay({
     ...display,
     operator: '',
-    hasPoint: false,
+    hasPoint: result.includes("."),
     previousValue: '0',
     value: limit(result + ''),
     //value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
@@ -109,6 +111,7 @@ const buttonsFunctions = {
 }
 
 const limit = (string = '', length = 10) => {
+  string = string + ''
   return string.slice(0, length) 
  }
   
@@ -128,6 +131,7 @@ const limit = (string = '', length = 10) => {
                 return(
                   <ButtonsRow key={index}
                   row={row}
+                  buttonsFunctions={buttonsFunctions}
                   />
                 )
               })

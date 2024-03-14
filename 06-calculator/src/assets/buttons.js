@@ -23,18 +23,18 @@ export const buttons = [[{
   ],[{
     class: 'numeric',
     label: '7',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   
   },{
     class: 'numeric',
     label: '8',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'numeric',
     label: '9',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'operator',
@@ -44,17 +44,17 @@ export const buttons = [[{
   }],[{
     class: 'numeric',
     label: '4',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'numeric',
     label: '5',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'numeric',
     label: '6',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'operator',
@@ -64,36 +64,36 @@ export const buttons = [[{
   }],[{
     class: 'numeric',
     label: '1',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'numeric',
     label: '2',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'numeric',
     label: '3',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
     class: 'operator',
-    label: '7',
+    label: '+',
     function: 'setOperator',
     columns: 1
   }],[{
     class: 'numeric',
     label: '0',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 2
   },{
     class: 'numeric',
     label: '.',
-    function: 'updatedDisplay',
+    function: 'updateDisplay',
     columns: 1
   },{
-    class: 'operator',
+    class: 'special',
     label: '=',
-    function: 'setOperator',
+    function: 'calculate',
     columns: 1
   }]]
