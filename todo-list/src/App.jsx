@@ -37,6 +37,10 @@ function App() {
           <List 
       taskList={taskList}
       />
+      <hr />
+      <div className="text-end">
+        <button type="button" className="btn btn-outline-primary"><i className="bi bi-plus-lg"></i>Add</button>
+      </div>
     </div>
   )
 }
