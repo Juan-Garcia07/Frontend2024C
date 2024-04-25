@@ -12,7 +12,9 @@ const List = ({taskList}) =>{
           <div className="col-3">
           <h4>Location</h4>
           </div>
-          
+          <div className="col">
+          <h4>Done</h4>
+        </div> 
         </div>
         {
             taskList.map(

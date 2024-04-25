@@ -19,6 +19,8 @@ const ListItem = ({task}) =>{
           </div>
           <div className="col-3">
             {task.location}
+            </div>
+          <div className="col">
           </div>
         </div>
         </>

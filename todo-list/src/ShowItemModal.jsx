@@ -22,13 +22,8 @@ const ShowItemModal = ({task}) =>{
                 </div>
                 <div className="col">
                 <i class="bi bi-geo-alt-fill"></i>{task.location}
-                    <div>
+                   
                 </div>
-                <div className="row">
-                <p className="col">
-                Formulario
-                </p>
-            </div>
             </div>
             <div className="modal-footer">
             <button className="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i>
@@ -45,13 +40,13 @@ const ShowItemModal = ({task}) =>{
                     <i className="bi bi-x-lg"></i>
                     Close
                 </button>
-               </div>
             </div>
            </div>
         </div>
       </div>
     </div>
     )
+    
 }
 
 export default ShowItemModal;
