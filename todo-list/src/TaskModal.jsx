@@ -7,8 +7,22 @@ const taskInfo = {
     location: "",
 }
 
-const TaskModal = () => {
+const TaskModal = ({ taskList,setTaskList }) => {
     const [values, handleInputChange, reset] = useForm(taskInfo)
+
+    const handleSaveClick = () => {
+        setTaskList([
+            ...taskList,
+            {
+                id: taskList.length + 1,
+                ...values,
+                isDone: false
+            }
+        ])
+
+        localStorage.setItem("taskList", JSON.stringify(taskList))
+        reset()
+    }
 
     return (
         <div className="modal fade" id={"TaskModal"}>
@@ -85,7 +99,7 @@ const TaskModal = () => {
                     <div className="modal-footer">
 
                         <button className="btn btn-sm btn-primary"
-                        onClick={() => console.log(values)}>
+                        onClick={handleSaveClick}>
                             <i className="bi bi-pencil-square"></i>
                             Save
                         </button>
