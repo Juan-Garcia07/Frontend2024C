@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import ListItem from "./Listitem"
 const List = ({taskList}) =>{
     return(
@@ -30,6 +31,9 @@ const List = ({taskList}) =>{
         </>
 
     )
+}
+List.propTypes = {
+    taskList: PropTypes.array.isRequired,
 }
 
 export default List

@@ -1,3 +1,5 @@
+import Swal from "sweetalert2"
+import PropTypes from "prop-types"
 import { useForm } from "./Hooks/UseForm"
 
 const taskInfo = {
@@ -11,17 +13,23 @@ const TaskModal = ({ taskList,setTaskList }) => {
     const [values, handleInputChange, reset] = useForm(taskInfo)
 
     const handleSaveClick = () => {
-        setTaskList([
+        const newTaskList = [
             ...taskList,
             {
                 id: taskList.length + 1,
                 ...values,
                 isDone: false
             }
-        ])
+        ]
+        setTaskList(newTaskList)
 
         localStorage.setItem("taskList", JSON.stringify(taskList))
         reset()
+
+        Swal.fire({
+            icon: "success",
+            title: "Task added",
+        })
     }
 
     return (
@@ -62,8 +70,8 @@ const TaskModal = ({ taskList,setTaskList }) => {
                                 <textarea
                                     className="form-control"
                                     id="description"
-                                    name="description"
                                     onChange={handleInputChange}
+                                    name="description"
                                     value={values.description}></textarea>
 
 
@@ -73,10 +81,10 @@ const TaskModal = ({ taskList,setTaskList }) => {
                                 </label>
                                 <input className="form-control"
                                     id="location"
-                                    name="location"
                                     onChange={handleInputChange}
-                                    value={values.location}
+                                    name="location"
                                     type="text"
+                                    value={values.location}
                                 />
 
                                 <label className="form-label"
@@ -87,8 +95,9 @@ const TaskModal = ({ taskList,setTaskList }) => {
 
                                 <input className="form-control"
                                     id="limit"
-                                    name="limit"
+                                    
                                     onChange={handleInputChange}
+                                    name="limit"
                                     type="time"
                                     value={values.limit}
                                 />
@@ -117,6 +126,11 @@ const TaskModal = ({ taskList,setTaskList }) => {
         </div>
     )
 
+}
+
+TaskModal.propTypes = {
+    taskList: PropTypes.array.isRequired,
+    setTaskList: PropTypes.func.isRequired
 }
 
 export default TaskModal
