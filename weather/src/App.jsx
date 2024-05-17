@@ -1,4 +1,5 @@
 import WeatherCard from "./components/weatherCard"
+import './assets/CSS/index.css'
 
 
 
