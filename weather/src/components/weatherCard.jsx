@@ -2,18 +2,18 @@ import { useEffect, useState } from "react"
 import { getCurrentWeather } from "../api/weatherapi"
 
 
-const WeatherCard = () => {
+const WeatherCard = ({city}) => {
     const [weather, setWeather] = useState(null)
 
     useEffect(() =>{
      const getWeather = async () =>{
-       const weather = await getCurrentWeather()
+       const weather = await getCurrentWeather(city)
    
        setWeather(weather)
      }
       
      getWeather()
-    },[])
+    },[city])
 
     return (
         <div className="card" style={{width: "18rem"}}>
